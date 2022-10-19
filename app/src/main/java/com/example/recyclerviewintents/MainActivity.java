@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements IntentAdaptador.I
                 return;
         }
     }
-    
+
     public void llamar()
     {
         android.content.Intent llamada = new android.content.Intent(android.content.Intent.ACTION_CALL);
