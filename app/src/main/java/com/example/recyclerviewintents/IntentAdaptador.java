@@ -11,14 +11,10 @@ import com.example.recyclerviewintents.Modelos.Intent;
 import java.util.List;
 
 public class IntentAdaptador extends RecyclerView.Adapter<IntentAdaptador.viewholder> {
-    protected IntentAdaptador.ItemListener itemListener;
     List<Intent> LI;
-    Context context;
 
-    public IntentAdaptador(ItemListener itemListener, List<Intent> LI, Context context) {
-        this.itemListener = itemListener;
+    public IntentAdaptador(List<Intent> LI) {
         this.LI = LI;
-        this.context = context;
     }
 
     @NonNull
@@ -39,10 +35,6 @@ public class IntentAdaptador extends RecyclerView.Adapter<IntentAdaptador.viewho
         return LI.size();
     }
 
-    public interface ItemListener {
-        void onItemClick(Intent item);
-    }
-
     public class viewholder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView txtIntent;
         Intent item;
@@ -55,9 +47,7 @@ public class IntentAdaptador extends RecyclerView.Adapter<IntentAdaptador.viewho
 
         @Override
         public void onClick(View view) {
-            if (itemListener != null) {
-                itemListener.onItemClick(item);
-            }
+            view.getContext().startActivity(item.getIntento());
         }
 
         public void setData(Intent item) {
